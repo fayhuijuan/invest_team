@@ -1,0 +1,12 @@
+szindex1<- szindex[1:285,]
+class(szindex1)
+xreg<- szindex1[1:284, c(4,6,7,8,9,11,12)]
+head(xreg);nrow(xreg)
+library(forecast)
+library(fGarch)
+library(tseries)
+adf.test(szindex1$Data.HIGH)#检验结果不平稳
+adf.test(diff(szindex1$Data.HIGH))#检验结果平稳
+Box.test(diff(szindex1$Data.HIGH), lag = 10, type = "Ljung-Box")#是白噪声序列
+acf(szindex1$Data.HIGH)
+acf(diff(szindex1$Data.HIGH))
