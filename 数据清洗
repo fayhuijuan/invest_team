@@ -1,0 +1,10 @@
+nameList <- c()
+for (i in 0:149){
+        nameList[[i+1]] <- paste0('w_wsd_data_',i)
+}
+head(nameList)
+nameList <- lapply(nameList, as.name)
+dfList <- list()
+for (i in 1:150){
+        dfList[[i]] <- setDT(eval(nameList[[i]])[[2]])
+}
